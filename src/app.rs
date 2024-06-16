@@ -2,7 +2,7 @@ use std::time::{Instant, Duration};
 use std::thread::sleep;
 use std::env;
 
-mod crypto;
+use crate::crypto;
 
 pub fn create_master_password() -> Result<String, &'static str> {
     // Examine if the master password has been made prior to now.

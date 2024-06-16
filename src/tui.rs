@@ -8,7 +8,7 @@ use crossterm::event::{poll, read, KeyCode, KeyModifiers};
 use std::time::{Instant, Duration};
 use std::thread::sleep;
 
-mod app;
+use crate::app;
 
 pub fn run(master_password: String) -> Result<(), Box<dyn std::error::Error>> {
     // Enable raw mode and alternate screen
