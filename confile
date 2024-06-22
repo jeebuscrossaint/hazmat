@@ -1,0 +1,4 @@
+src = main.cpp manager.cpp
+flags = -lmysqlclient -largon2
+bin = main.o manager.o
+
