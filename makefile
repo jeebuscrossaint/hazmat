@@ -1,9 +1,9 @@
 CXX = g++
-CXXFLAGS = -Wall -Wextra -pedantic -I/usr/local/include/mariadb
+CXXFLAGS = -O2 -Wall -Wextra -pedantic -I/usr/local/include/mariadb
 LDFLAGS = -L/usr/local/lib/mariadb -lmariadbcpp -largon2
 
 TARGET = password_manager
-SRCS = main.cpp manager.cpp
+SRCS = main.cpp manager.cpp db.cpp crypto.cpp
 OBJS = $(SRCS:.cpp=.o)
 
 .PHONY: all clean
