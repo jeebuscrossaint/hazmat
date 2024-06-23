@@ -1,6 +1,6 @@
 CXX = g++
-CXXFLAGS = -O2 -Wall -Wextra -pedantic -I/usr/local/include/mariadb
-LDFLAGS = -L/usr/local/lib/mariadb -lmariadbcpp -largon2
+CXXFLAGS = -O2 -Wall -Wextra -pedantic -I/usr/include/mysql
+LDFLAGS = -L/usr/local/lib/mariadb -lmysqlclient -largon2
 
 TARGET = password_manager
 SRCS = main.cpp manager.cpp db.cpp crypto.cpp

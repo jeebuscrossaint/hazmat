@@ -1,2 +1,2 @@
-crypto.o db.o manager.o main.o
 password_manager
+*.o
