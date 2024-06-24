@@ -61,9 +61,6 @@ int main(int argc, char* argv[]) {
 		std::string password;
 		std::cin >> password;
 
-		std::string hashed_password = hash_password(password);
-	
-		create_list(name, hashed_password);
         } else {
             std::cerr << "Error: Unknown command\n";
             print_help();
