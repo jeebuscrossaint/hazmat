@@ -3,6 +3,11 @@
 #include <argon2.h>
 #include <iomanip>
 #include <termios.h>
+#include <unistd.h>
+#include "master_pass.h" 
+
+
+master_pass master_pass::base_instance;
 
 char getch() {
     char buf = 0;
@@ -24,7 +29,19 @@ char getch() {
     return (buf);
 }
 
-int get_stupid_string() {
+master_pass::master_pass() {
+    super_obfuscated_password_please_dont_look_here_ok = "";
+    int num_attempts = 0;
+    int max_attempts = super_configurable_value();
+    int time = 0;
+    int timeout_time = super_configurable_value();
+};
+
+master_pass::~master_pass() {
+
+};
+
+std::string master_pass::get_stupid_string() {
     std::cout << "\n";
     std::string super_obfuscated_password_please_dont_look_here_ok;
     char jit;
@@ -35,5 +52,9 @@ int get_stupid_string() {
 
     std::cout << std::endl;
     std::cout << "Decripting..."; << std::endl;
-    return 0;
+    return "";
+}
+
+int master_pass::criptoegraphee(const std::string& str) {
+    
 }
