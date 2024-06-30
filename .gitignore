@@ -1,3 +1,2 @@
-password_manager
-*.o
-*.tar.gz
+zig-cache/*
+zig-out/*
