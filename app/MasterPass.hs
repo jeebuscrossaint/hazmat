@@ -38,3 +38,6 @@ getLimitedInput n count input = do
       rest <- getLimitedInput (n - 1) (count + 1) newInput
       return (char : rest)
 
+getHashOfInput :: String -> IO ()
+getHashOfInput input = do
+  
