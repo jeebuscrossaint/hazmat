@@ -1,9 +1,39 @@
 #include "cli.hh"
-
+#include "../list/list.hh"
 #include <iostream>
+#include <cstdlib> // For std::exit
 
 void password_manager_cli::run(int argc, char **argv) {
-    printHelp();
+    if (argc > 1) {
+        std::string command = argv[1];
+        if (command == "list") {
+            if (argc > 2) {
+                std::string subcommand = argv[2];
+                if (subcommand == "add") {
+                    std::string name, description, hint;
+                    std::cout << "Enter the name of the new list: ";
+                    std::getline(std::cin, name);
+                    std::cout << "Enter a description (optional): ";
+                    std::getline(std::cin, description);
+                    std::cout << "Enter a hint (optional): ";
+                    std::getline(std::cin, hint);
+
+                    List list;
+                    list.addList(name, description, hint);
+                }
+            } else {
+                const std::string red = "\033[31m";
+                const std::string reset = "\033[0m";
+                std::cerr << "Error: You need to add a subcommand, " << red << "idiot" << reset << "!" << std::endl;
+                std::cout << "Possible subcommands: add update list delete";
+                std::exit(EXIT_FAILURE);
+            }
+        } else {
+            printHelp();
+        }
+    } else {
+        printHelp();
+    }
 }
 
 void password_manager_cli::printHelp() {
