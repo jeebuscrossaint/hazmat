@@ -1,5 +1,4 @@
 #include "list.hh"
-#include <iostream>
 
 void List::listLists() {
     std::cout << "\n this will print a big ol list of existing lists";

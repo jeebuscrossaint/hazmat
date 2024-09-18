@@ -5,6 +5,11 @@
 #include <string>
 #include <vector>
 #include <iostream>
+#include <openssl/evp.h>
+#include <openssl/rand.h>
+#include <openssl/aes.h>
+#include <openssl/kdf.h>
+
 
 class List {
 public:
