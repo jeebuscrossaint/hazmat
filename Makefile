@@ -2,7 +2,7 @@
 CXX := g++
 
 # Compiler flags
-CXXFLAGS := -std=c++11 -Wall -Wextra -pedantic
+CXXFLAGS := -std=c++26 -Wall -Wextra -pedantic
 
 # Directories
 BUILD_DIR := build

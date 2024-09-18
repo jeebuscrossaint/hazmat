@@ -25,7 +25,7 @@ void password_manager_cli::run(int argc, char **argv) {
                 const std::string red = "\033[31m";
                 const std::string reset = "\033[0m";
                 std::cerr << "Error: You need to add a subcommand, " << red << "idiot" << reset << "!" << std::endl;
-                std::cout << "Possible subcommands: add update list delete";
+                std::cout << "Possible subcommands: add update list delete\n";
                 std::exit(EXIT_FAILURE);
             }
         } else {
