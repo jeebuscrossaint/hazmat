@@ -35,16 +35,18 @@ void password_manager_cli::run(int argc, char **argv) {
             if (argc > 2) {
                 std::string subcommand = argv[2];
                 if (subcommand == "password") {
-                    std::string listName, username, hint;
+                    std::string listName, username, hint, passwordValue;
                     std::cout << "Enter the username to add (leave blank if none): ";
                     std::getline(std::cin, username);
+                    std::cout << "Enter the password: ";
+                    std::getline(std::cin, passwordValue);
                     std::cout << "Enter which list to add to (leave blank if master): ";
                     std::getline(std::cin, listName);
                     std::cout << "Enter a hint (optional, can be a path to an image if you use visual password hints.): ";   
                     std::getline(std::cin, hint);
 
                     Password password;
-                    password.addPassword(listName, username, hint);
+                    password.addPassword(listName, username, hint, passwordValue);
                 }   
             } else {
                 const std::string red = "\033[31m";
@@ -53,7 +55,7 @@ void password_manager_cli::run(int argc, char **argv) {
                 std::cout << "Possible subcommands: password username hint\n";
                 std::exit(EXIT_FAILURE);
             }
-        }               
+        } 
     } else {
         printHelp();
     }

@@ -9,14 +9,13 @@
 class Password {
 public:
     void listPasswords();
-    void addPassword(const std::string& listName, const std::string& username, const std::string& hint);
+    void addPassword(const std::string& listName, const std::string& username, const std::string& hint, const std::string& passwordValue);
 
 private:
-    // idfk add private functions and atrributes here later
     std::string listName;
     std::string username;
     std::string hint;
-    
+    std::string passwordValue;
 };
 
 #endif // PASSWORD_H
