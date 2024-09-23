@@ -35,7 +35,7 @@ void password_manager_cli::run(int argc, char **argv) {
             if (argc > 2) {
                 std::string subcommand = argv[2];
                 if (subcommand == "password") {
-                    std::string listName, username, hint, passwordValue;
+                    /*std::string listName, username, hint, passwordValue;
                     std::cout << "Enter the username to add (leave blank if none): ";
                     std::getline(std::cin, username);
                     std::cout << "Enter the password: ";
@@ -46,7 +46,9 @@ void password_manager_cli::run(int argc, char **argv) {
                     std::getline(std::cin, hint);
 
                     Password password;
-                    password.addPassword(listName, username, hint, passwordValue);
+                    password.addPassword(listName, username, hint, passwordValue); */
+                    Password password;
+                    password.promptAndAddPassword();
                 }   
             } else {
                 const std::string red = "\033[31m";
