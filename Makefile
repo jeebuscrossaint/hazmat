@@ -2,7 +2,7 @@
 CXX := g++
 #CXX := cosmoc++
 # Compiler flags
-CXXFLAGS := -std=c++26 -Wall -Wextra -pedantic
+CXXFLAGS := -std=c++26 -Wall -Wextra -pedantic -largon2
 # Directories
 BUILD_DIR := build
 SRC_DIR := .
