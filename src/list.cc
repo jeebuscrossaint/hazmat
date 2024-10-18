@@ -1,4 +1,4 @@
-#include "list.hh"
+#include "../include/list.hh"
 
 void List::listLists() {
     std::cout << "\n this will print a big ol list of existing lists";

@@ -1,8 +1,8 @@
-#include "cli.hh"
-#include "../list/list.hh"
+#include "../include/cli.hh"
+#include "../include/list.hh"
 #include <iostream>
 #include <cstdlib> // For std::exit
-#include "../password/password.hh"
+#include "../include/password.hh"
 
 void password_manager_cli::run(int argc, char **argv) {
     if (argc > 1) {

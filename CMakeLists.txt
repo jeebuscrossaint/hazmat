@@ -8,10 +8,10 @@ set(ARGON2_LIBRARY /usr/lib/libargon2.so)  # or .a for static library
 # Add your source files
 add_executable(hazmat
   src/main.cc
-  src/cli/cli.cc
-  src/list/list.cc
-  src/master/master.cc
-  src/password/password.cc
+  src/cli.cc
+  src/list.cc
+  src/master.cc
+  src/password.cc
 )
 
 # Link Argon2 to the executable

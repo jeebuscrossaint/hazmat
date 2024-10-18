@@ -1,5 +1,5 @@
-#include "password.hh"
-#include "../list/list.hh"
+#include "../include/password.hh"
+#include "../include/master.hh"
 
 std::string getPassword(const std::string& prompt) {
     std::cout << prompt;

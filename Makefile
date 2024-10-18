@@ -129,53 +129,53 @@ hazmat/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/hazmat.dir/build.make CMakeFiles/hazmat.dir/build
 .PHONY : hazmat/fast
 
-src/cli/cli.o: src/cli/cli.cc.o
-.PHONY : src/cli/cli.o
+src/cli.o: src/cli.cc.o
+.PHONY : src/cli.o
 
 # target to build an object file
-src/cli/cli.cc.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/hazmat.dir/build.make CMakeFiles/hazmat.dir/src/cli/cli.cc.o
-.PHONY : src/cli/cli.cc.o
+src/cli.cc.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/hazmat.dir/build.make CMakeFiles/hazmat.dir/src/cli.cc.o
+.PHONY : src/cli.cc.o
 
-src/cli/cli.i: src/cli/cli.cc.i
-.PHONY : src/cli/cli.i
+src/cli.i: src/cli.cc.i
+.PHONY : src/cli.i
 
 # target to preprocess a source file
-src/cli/cli.cc.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/hazmat.dir/build.make CMakeFiles/hazmat.dir/src/cli/cli.cc.i
-.PHONY : src/cli/cli.cc.i
+src/cli.cc.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/hazmat.dir/build.make CMakeFiles/hazmat.dir/src/cli.cc.i
+.PHONY : src/cli.cc.i
 
-src/cli/cli.s: src/cli/cli.cc.s
-.PHONY : src/cli/cli.s
+src/cli.s: src/cli.cc.s
+.PHONY : src/cli.s
 
 # target to generate assembly for a file
-src/cli/cli.cc.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/hazmat.dir/build.make CMakeFiles/hazmat.dir/src/cli/cli.cc.s
-.PHONY : src/cli/cli.cc.s
+src/cli.cc.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/hazmat.dir/build.make CMakeFiles/hazmat.dir/src/cli.cc.s
+.PHONY : src/cli.cc.s
 
-src/list/list.o: src/list/list.cc.o
-.PHONY : src/list/list.o
+src/list.o: src/list.cc.o
+.PHONY : src/list.o
 
 # target to build an object file
-src/list/list.cc.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/hazmat.dir/build.make CMakeFiles/hazmat.dir/src/list/list.cc.o
-.PHONY : src/list/list.cc.o
+src/list.cc.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/hazmat.dir/build.make CMakeFiles/hazmat.dir/src/list.cc.o
+.PHONY : src/list.cc.o
 
-src/list/list.i: src/list/list.cc.i
-.PHONY : src/list/list.i
+src/list.i: src/list.cc.i
+.PHONY : src/list.i
 
 # target to preprocess a source file
-src/list/list.cc.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/hazmat.dir/build.make CMakeFiles/hazmat.dir/src/list/list.cc.i
-.PHONY : src/list/list.cc.i
+src/list.cc.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/hazmat.dir/build.make CMakeFiles/hazmat.dir/src/list.cc.i
+.PHONY : src/list.cc.i
 
-src/list/list.s: src/list/list.cc.s
-.PHONY : src/list/list.s
+src/list.s: src/list.cc.s
+.PHONY : src/list.s
 
 # target to generate assembly for a file
-src/list/list.cc.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/hazmat.dir/build.make CMakeFiles/hazmat.dir/src/list/list.cc.s
-.PHONY : src/list/list.cc.s
+src/list.cc.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/hazmat.dir/build.make CMakeFiles/hazmat.dir/src/list.cc.s
+.PHONY : src/list.cc.s
 
 src/main.o: src/main.cc.o
 .PHONY : src/main.o
@@ -201,53 +201,53 @@ src/main.cc.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/hazmat.dir/build.make CMakeFiles/hazmat.dir/src/main.cc.s
 .PHONY : src/main.cc.s
 
-src/master/master.o: src/master/master.cc.o
-.PHONY : src/master/master.o
+src/master.o: src/master.cc.o
+.PHONY : src/master.o
 
 # target to build an object file
-src/master/master.cc.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/hazmat.dir/build.make CMakeFiles/hazmat.dir/src/master/master.cc.o
-.PHONY : src/master/master.cc.o
+src/master.cc.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/hazmat.dir/build.make CMakeFiles/hazmat.dir/src/master.cc.o
+.PHONY : src/master.cc.o
 
-src/master/master.i: src/master/master.cc.i
-.PHONY : src/master/master.i
+src/master.i: src/master.cc.i
+.PHONY : src/master.i
 
 # target to preprocess a source file
-src/master/master.cc.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/hazmat.dir/build.make CMakeFiles/hazmat.dir/src/master/master.cc.i
-.PHONY : src/master/master.cc.i
+src/master.cc.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/hazmat.dir/build.make CMakeFiles/hazmat.dir/src/master.cc.i
+.PHONY : src/master.cc.i
 
-src/master/master.s: src/master/master.cc.s
-.PHONY : src/master/master.s
+src/master.s: src/master.cc.s
+.PHONY : src/master.s
 
 # target to generate assembly for a file
-src/master/master.cc.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/hazmat.dir/build.make CMakeFiles/hazmat.dir/src/master/master.cc.s
-.PHONY : src/master/master.cc.s
+src/master.cc.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/hazmat.dir/build.make CMakeFiles/hazmat.dir/src/master.cc.s
+.PHONY : src/master.cc.s
 
-src/password/password.o: src/password/password.cc.o
-.PHONY : src/password/password.o
+src/password.o: src/password.cc.o
+.PHONY : src/password.o
 
 # target to build an object file
-src/password/password.cc.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/hazmat.dir/build.make CMakeFiles/hazmat.dir/src/password/password.cc.o
-.PHONY : src/password/password.cc.o
+src/password.cc.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/hazmat.dir/build.make CMakeFiles/hazmat.dir/src/password.cc.o
+.PHONY : src/password.cc.o
 
-src/password/password.i: src/password/password.cc.i
-.PHONY : src/password/password.i
+src/password.i: src/password.cc.i
+.PHONY : src/password.i
 
 # target to preprocess a source file
-src/password/password.cc.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/hazmat.dir/build.make CMakeFiles/hazmat.dir/src/password/password.cc.i
-.PHONY : src/password/password.cc.i
+src/password.cc.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/hazmat.dir/build.make CMakeFiles/hazmat.dir/src/password.cc.i
+.PHONY : src/password.cc.i
 
-src/password/password.s: src/password/password.cc.s
-.PHONY : src/password/password.s
+src/password.s: src/password.cc.s
+.PHONY : src/password.s
 
 # target to generate assembly for a file
-src/password/password.cc.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/hazmat.dir/build.make CMakeFiles/hazmat.dir/src/password/password.cc.s
-.PHONY : src/password/password.cc.s
+src/password.cc.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/hazmat.dir/build.make CMakeFiles/hazmat.dir/src/password.cc.s
+.PHONY : src/password.cc.s
 
 # Help Target
 help:
@@ -258,21 +258,21 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... hazmat"
-	@echo "... src/cli/cli.o"
-	@echo "... src/cli/cli.i"
-	@echo "... src/cli/cli.s"
-	@echo "... src/list/list.o"
-	@echo "... src/list/list.i"
-	@echo "... src/list/list.s"
+	@echo "... src/cli.o"
+	@echo "... src/cli.i"
+	@echo "... src/cli.s"
+	@echo "... src/list.o"
+	@echo "... src/list.i"
+	@echo "... src/list.s"
 	@echo "... src/main.o"
 	@echo "... src/main.i"
 	@echo "... src/main.s"
-	@echo "... src/master/master.o"
-	@echo "... src/master/master.i"
-	@echo "... src/master/master.s"
-	@echo "... src/password/password.o"
-	@echo "... src/password/password.i"
-	@echo "... src/password/password.s"
+	@echo "... src/master.o"
+	@echo "... src/master.i"
+	@echo "... src/master.s"
+	@echo "... src/password.o"
+	@echo "... src/password.i"
+	@echo "... src/password.s"
 .PHONY : help
 
 

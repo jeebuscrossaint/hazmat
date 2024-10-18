@@ -1,4 +1,4 @@
-#include "master.hh"
+#include "../include/master.hh"
 
 std::vector<uint8_t> master_password::generateSalt(size_t length) {
     std::random_device rd;
