@@ -22,3 +22,6 @@ Entry::~Entry() {
     this->date_and_time = "";
 }
 
+void addEntry(const std::string& username, const std::string& password) {
+        
+}
