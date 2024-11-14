@@ -23,7 +23,6 @@ void SETUP::setup() {
 
 void SETUP::inportcsv(std::string* csvinput) {
         
-
 };
 
 void SETUP::exportcsv() {
