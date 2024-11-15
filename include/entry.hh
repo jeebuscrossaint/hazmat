@@ -9,17 +9,23 @@
 #include <fstream>
 #include <sstream>
 
-namespace userpass {
+namespace entry {
+
+typedef struct {
+        std::string url;
+        std::string username;
+        std::string password;
+        std::string httpRealm;
+        std::string formActionOrigin;
+        std::string guid;
+        std::string timeCreated;
+        std::string timeLastUsed;
+        std::string timePasswordChanged;
+} EntryData;
+
 
 class Entry {
         public:
-                std::string username;
-                std::string password;
-                std::string website;
-                std::string email;
-                std::string hints;
-                std::string description;
-                std::string date_and_time;
 
                 // Constructors and Destructors
                 Entry();
