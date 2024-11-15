@@ -78,13 +78,9 @@ std::vector<entry::EntryData> SETUP::parseCSV(const std::string& csvLine) {
                         entry.url = token;
                         std::getline(ss, entry.username, ',');
                         std::getline(ss, entry.password, ',');
-                        std::getline(ss, entry.httpRealm, ',');
-                        std::getline(ss, entry.formActionOrigin, ',');
-                        std::getline(ss, entry.guid, ',');
                         std::getline(ss, entry.timeCreated, ',');
                         std::getline(ss, entry.timeLastUsed, ',');
                         std::getline(ss, entry.timePasswordChanged, ',');
-                        entry.isImported = true;
                         entries.push_back(entry);
                 }
         }

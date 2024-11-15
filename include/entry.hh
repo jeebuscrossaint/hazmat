@@ -15,13 +15,9 @@ typedef struct {
         std::string url;
         std::string username;
         std::string password;
-        std::string httpRealm;
-        std::string formActionOrigin;
-        std::string guid;
         std::string timeCreated;
         std::string timeLastUsed;
         std::string timePasswordChanged;
-        bool isImported = false;
 } EntryData;
 
 
