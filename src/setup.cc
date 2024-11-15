@@ -23,7 +23,6 @@ void SETUP::setupdir() {
                 fs::create_directory(hazmatdir);
                 return;
         }
-        std::cout << "Well, you already have a home and a .hazmat dir, good to know you came well prepared." << std::endl;
 };
 
 void SETUP::importcsv(std::string* csvinput) {
