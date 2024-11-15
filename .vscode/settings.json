@@ -91,6 +91,7 @@
         "hash_set": "cpp",
         "strstream": "cpp",
         "netfwd": "cpp",
-        "source_location": "cpp"
+        "source_location": "cpp",
+        "*.ipp": "cpp"
     }
 }

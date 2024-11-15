@@ -6,15 +6,14 @@ set(CMAKE_C_COMPILER clang)
 set(CMAKE_CXX_COMPILER clang++)
 set(ARGON2_INCLUDE_DIR /usr/local/include)
 set(ARGON2_LIBRARY /usr/lib/libargon2.so)  # or .a for static library
+set(CXX_STANDARD 23)
 
 # Add your source files
 add_executable(hazmat
   src/main.cc
-#  src/cli.cc
-#  src/list.cc
-#  src/master.cc
-#  src/password.cc
-)
+  src/setup.cc
+  src/entry.cc
+  )
 
 # Link Argon2 to the executable
 target_include_directories(hazmat PRIVATE ${ARGON2_INCLUDE_DIR})

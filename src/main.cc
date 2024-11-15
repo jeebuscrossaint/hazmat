@@ -1,9 +1,15 @@
 #include "../include/entry.hh"
+#include "../include/setup.hh"
 
-using namespace userpass;
+int main(int argc, char* argv[]) {
+    entry::Entry entry;
+    setup::SETUP setup;
 
-int main(int argv, char* argc[]) {
-    Entry entry;
-    
+    setup.setupdir();
+
+    if (argc > 2 && std::string(argv[1]) == "import") {
+        std::string filepath = argv[2];
+        setup.importcsv(&filepath);
+    }
     return 0;
 }

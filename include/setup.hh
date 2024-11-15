@@ -13,25 +13,27 @@
 #include <sys/types.h>
 #include <cstdlib>
 
+#include "entry.hh"
+
 namespace setup {
 
 class SETUP {
-        private:
-        // Constructors and Destructors
-        SETUP();
-        ~SETUP();
+        public:
+                // Constructors and Destructors
+                SETUP();
+                ~SETUP();
+                // csv to hazmat program conversion so that way the user can import their browser entries!
+                void importcsv(std::string* csvinput);
 
-        // setup function for the first time the program is ran
-        void setup();
+                std::vector<entry::EntryData> parseCSV(const std::string& csvLine);
+                
+                // hazmat to csv conversion so the user can export data if they quit using my lovely program :(
+                void convert(std::vector<entry::EntryData>* entries);
+                
+                // setup function for the first time the program is ran
+                void setupdir();
 
-        // csv to hazmat program conversion so that way the user can import their browser entries!
-        void inportcsv(std::string* csvinput);
-
-        void convert(std::string* csvinput);
-        // hazmat to csv conversion so the user can export data if they quit using my lovely program :(
-        void exportcsv();
-
-        std::vector<
+                void exportcsv();
 };
 
 }
