@@ -84,6 +84,7 @@ std::vector<entry::EntryData> SETUP::parseCSV(const std::string& csvLine) {
                         std::getline(ss, entry.timeCreated, ',');
                         std::getline(ss, entry.timeLastUsed, ',');
                         std::getline(ss, entry.timePasswordChanged, ',');
+                        entry.isImported = true;
                         entries.push_back(entry);
                 }
         }

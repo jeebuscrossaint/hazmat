@@ -21,6 +21,7 @@ typedef struct {
         std::string timeCreated;
         std::string timeLastUsed;
         std::string timePasswordChanged;
+        bool isImported = false;
 } EntryData;
 
 
