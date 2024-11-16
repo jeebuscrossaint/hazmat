@@ -33,8 +33,8 @@ void SETUP::setupdir() {
         std::cout << "First time setup - creating master password" << std::endl;
         
         //crypto::cryptosys crypto;
-        std::string masterPass = crypto.getSecureInput("Enter new master password: ");
-        std::string confirmPass = crypto.getSecureInput("Confirm master password: ");
+        std::string masterPass = crypto::cryptosys::getSecureInput("Enter new master password: ");
+        std::string confirmPass = crypto::cryptosys::getSecureInput("Confirm master password: ");
 
         if (masterPass != confirmPass) {
             std::cerr << "Passwords do not match!" << std::endl;
@@ -42,14 +42,14 @@ void SETUP::setupdir() {
         }
 
         // Generate salt and hash password
-        std::string salt = crypto.generateSalt();
+        std::string salt = crypto::cryptosys::generateSalt();
         std::string hashedPass = crypto.hashMasterPassword(masterPass);
         
         // Store master password data
         std::ofstream mfile(master_file);
         if (mfile.is_open()) {
-            mfile << crypto.base64Encode(salt) << std::endl;
-            mfile << crypto.base64Encode(hashedPass) << std::endl;
+            mfile << crypto::cryptosys::base64Encode(salt) << std::endl;
+            mfile << crypto::cryptosys::base64Encode(hashedPass) << std::endl;
             mfile.close();
         }
     }
