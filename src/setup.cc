@@ -19,7 +19,7 @@ void SETUP::setupdir() {
         }
         std::string hazmatdir = std::string(env_home) + "/.hazmat"; 
         if (hazmatdir.empty()) {
-                std::cout << "Seems like this is your first rodeo... at least you have a roof over your head.";
+                std::cout << "Seems like this is your first rodeo... at least you have a roof over your head." << std::endl;
                 fs::create_directory(hazmatdir);
                 return;
         }
