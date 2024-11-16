@@ -5,7 +5,6 @@
 int main(int argc, char* argv[]) {
     entry::Entry entry;
     setup::SETUP setup;
-    crypto::cryptosys crypto;
 
     setup.setupdir();
 
