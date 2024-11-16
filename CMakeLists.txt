@@ -14,5 +14,5 @@ add_executable(hazmat
   src/main.cc
   src/setup.cc
   src/entry.cc
-  src/crpyt.cc
+  src/crypt.cc
 )
