@@ -1,4 +1,5 @@
 #include "../include/setup.hh"
+#include "../include/crypt.hh"
 
 using namespace setup;
 namespace fs = std::filesystem;
@@ -12,18 +13,47 @@ SETUP::~SETUP() {
 }
 
 void SETUP::setupdir() {
-        const char* env_home = std::getenv("HOME");
-        if (env_home == nullptr) {
-                std::cerr << "You dont have a home directory? What are you, homeless?" << std::endl; // they call me the buffer flusher
-                return;
+    const char* env_home = std::getenv("HOME");
+    if (env_home == nullptr) {
+        std::cerr << "You dont have a home directory? What are you, homeless?" << std::endl;
+        return;
+    }
+    
+    std::string hazmatdir = std::string(env_home) + "/.hazmat";
+    std::string master_file = hazmatdir + "/master.key";
+    
+    // Create .hazmat directory if it doesn't exist
+    if (!fs::exists(hazmatdir)) {
+        std::cout << "Creating hazmat directory..." << std::endl;
+        fs::create_directory(hazmatdir);
+    }
+
+    // Check if master password exists
+    if (!fs::exists(master_file)) {
+        std::cout << "First time setup - creating master password" << std::endl;
+        
+        crypto::cryptosys crypto;
+        std::string masterPass = crypto.getSecureInput("Enter new master password: ");
+        std::string confirmPass = crypto.getSecureInput("Confirm master password: ");
+
+        if (masterPass != confirmPass) {
+            std::cerr << "Passwords do not match!" << std::endl;
+            return;
         }
-        std::string hazmatdir = std::string(env_home) + "/.hazmat"; 
-        if (hazmatdir.empty()) {
-                std::cout << "Seems like this is your first rodeo... at least you have a roof over your head." << std::endl;
-                fs::create_directory(hazmatdir);
-                return;
+
+        // Generate salt and hash password
+        std::string salt = crypto.generateSalt();
+        std::string hashedPass = crypto.hashMasterPassword(masterPass);
+        
+        // Store master password data
+        std::ofstream mfile(master_file);
+        if (mfile.is_open()) {
+            mfile << crypto.base64Encode(salt) << std::endl;
+            mfile << crypto.base64Encode(hashedPass) << std::endl;
+            mfile.close();
         }
-};
+    }
+}
 
 void SETUP::importcsv(std::string* csvinput) {
         // check if file exists because im not aboutta abrot for no reason
@@ -52,7 +82,7 @@ void SETUP::importcsv(std::string* csvinput) {
 };
 
 void SETUP::convert(std::vector<entry::EntryData>* entries) {
-        return;
+        
 };
 
 
