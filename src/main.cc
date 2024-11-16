@@ -1,9 +1,11 @@
 #include "../include/entry.hh"
 #include "../include/setup.hh"
+#include "../include/crypt.hh"
 
 int main(int argc, char* argv[]) {
     entry::Entry entry;
     setup::SETUP setup;
+    crypto::cryptosys crypto;
 
     setup.setupdir();
 

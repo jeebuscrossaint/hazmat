@@ -32,7 +32,7 @@ void SETUP::setupdir() {
     if (!fs::exists(master_file)) {
         std::cout << "First time setup - creating master password" << std::endl;
         
-        crypto::cryptosys crypto;
+        //crypto::cryptosys crypto;
         std::string masterPass = crypto.getSecureInput("Enter new master password: ");
         std::string confirmPass = crypto.getSecureInput("Confirm master password: ");
 
