@@ -9,3 +9,4 @@ Makefile
 *.filters
 *.sln
 compile-commands.json
+.cache
