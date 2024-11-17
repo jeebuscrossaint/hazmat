@@ -8,3 +8,4 @@ Makefile
 *.vcxproj
 *.filters
 *.sln
+compile-commands.json
