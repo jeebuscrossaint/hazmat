@@ -20,6 +20,9 @@ if (EXISTS ${CMAKE_BINARY_DIR}/compile_commands.json)
     )
 endif()
 
+set(CMAKE_RULE_MESSAGES OFF)
+set(CMAKE_VERBOSE_MAKEFILE ON)
+
 # Add your source files
 add_executable(hazmat
   src/main.cc
