@@ -1,3 +1,8 @@
+# hazmat
+____
+
+**the most epic password manager you have ever seen**
+
 Creating a secure data storage format for a password manager is a critical task. It involves a careful selection and implementation of cryptographic techniques to protect sensitive information. Here's a suggested approach, considering the techniques you mentioned:
 
 1. Data Structure:
