@@ -3,6 +3,7 @@
 #include <cstdlib>
 #include <fstream>
 #include <iterator>
+#include <ostream>
 #include <string>
 
 using namespace setup;
@@ -86,7 +87,58 @@ void SETUP::importcsv(std::string* csvinput) {
 };
 
 void SETUP::convert(std::vector<entry::EntryData>* entries) {
+        const char* env_home = std::getenv("HOME");
+    if (env_home == nullptr) {
+        std::cerr << "Error: HOME environment variable not set" << std::endl;
+        return;
+    }
+
+    // Create full paths
+    std::string hazmatdir = std::string(env_home) + "/.hazmat";
+    std::string entriesfile = hazmatdir + "/entries.db";
+
+    // Ensure .hazmat directory exists
+    if (!fs::exists(hazmatdir)) {
+        if (!fs::create_directory(hazmatdir)) {
+            std::cerr << "Error: Could not create .hazmat directory" << std::endl;
+            return;
+        }
+    }
+
+    // Open file with full path
+    std::ofstream outfile(entriesfile);
+    if (!outfile.is_open()) {
+        std::cerr << "Error: Could not create entries file at " << entriesfile << std::endl;
+        return;
+    }
+
+        // write header/key paragraph
+        outfile << "? * |" << std::endl;
+        outfile << "\"url\"" << std::endl;
+        outfile << "\"username\"" << std::endl;
+        outfile << "\"password\"" << std::endl;
+        outfile << "\"timeCreated\"" << std::endl;
+        outfile << "\"timeLastUsed\"" << std::endl;
+        outfile << "\"timePasswordChanged\"" << std::endl;
+        outfile << "| * ?" << std::endl << std::endl;
+
+        // write entries
+        for (size_t i = 0; i < entries->size(); i++) {
+                //create semicolon index markers
+                outfile << std::string(i+1, ';') << "  [" << std::endl;
+
+                const auto& entry = entries->at(i);
+                outfile << "\"" << entry.url << "\"" << std::endl;
+                outfile << "\"" << entry.username << "\"" << std::endl;
+                outfile << "\"" << entry.password << "\"" << std::endl;
+                outfile << "\"" << entry.timeCreated << "\"" << std::endl;
+                outfile << "\"" << entry.timeLastUsed << "\"" << std::endl;
+                outfile << "\"" << entry.timePasswordChanged << "\"" << std::endl;
         
+                outfile << "]" << std::endl;
+        }
+
+        outfile.close();
 };
 
 
