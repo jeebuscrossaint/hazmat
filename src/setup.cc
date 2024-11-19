@@ -1,5 +1,9 @@
 #include "../include/setup.hh"
 #include "../include/crypt.hh"
+#include <cstdlib>
+#include <fstream>
+#include <iterator>
+#include <string>
 
 using namespace setup;
 namespace fs = std::filesystem;
@@ -120,3 +124,45 @@ void SETUP::exportcsv() {
 
 
 };
+
+bool SETUP::createlockfile() {
+        const char* tempdir = "/tmp";
+        std::string lockfile = std::string(tempdir) + "/hazmat.lock";
+
+        // check if the lockfile exists
+        if (fs::exists(lockfile)) {
+                // check the existing PID, if there is one.
+                std::ifstream existing_lock(lockfile);
+                pid_t existing_pid;
+                existing_lock >> existing_pid;
+                existing_lock.close();
+
+                // check if the process is still running
+                if (kill(existing_pid, 0) == 0) {
+                        std::cerr << "hazmat is already running (PID: " << existing_pid << ")" << std::endl;
+                        return false;
+                }
+
+                // stale lock file? KILL IT!!
+                fs::remove(lockfile);
+        }
+
+        // create a new lock file
+        std::ofstream lock(lockfile);
+        if (!lock.is_open()) {
+                std::cerr << "Could not create lock file" << std::endl;
+                return false;
+        }
+
+        // write current PID to lock
+        pid_t current_pid = getpid();
+        lock << current_pid << std::endl;
+        lock.close();
+
+        //register cleanup handler
+        std::atexit([]() {
+                fs::remove("/tmp/hazmat.lock");
+        });
+        
+        return true;
+}

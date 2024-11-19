@@ -7,6 +7,9 @@ int main(int argc, char* argv[]) {
     entry::Entry entry;
     setup::SETUP setup;
 
+    if (!setup.createlockfile()) {
+        return 1;
+    }
     setup.setupdir();
 
     if (argc > 2 && std::string(argv[1]) == "import") {

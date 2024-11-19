@@ -12,6 +12,9 @@
 #include <sys/stat.h>
 #include <sys/types.h>
 #include <cstdlib>
+#include <signal.h>
+#include <sys/types.h>
+#include <unistd.h>
 
 #include "entry.hh"
 
@@ -22,6 +25,9 @@ class SETUP {
                 // Constructors and Destructors
                 SETUP();
                 ~SETUP();
+
+                // lock file function
+                bool createlockfile();
                 // csv to hazmat program conversion so that way the user can import their browser entries!
                 void importcsv(std::string* csvinput);
 
@@ -34,6 +40,7 @@ class SETUP {
                 void setupdir();
 
                 void exportcsv();
+;
 };
 
 }
