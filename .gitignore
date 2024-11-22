@@ -10,3 +10,7 @@ Makefile
 *.sln
 compile_commands.json
 .cache
+
+# Added by cargo
+
+/target
