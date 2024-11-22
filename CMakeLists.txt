@@ -1,14 +1,15 @@
 cmake_minimum_required(VERSION 3.30.5)
 project(hazmat)
 
-# Specify the Argon2 include and library directories manually
+# Set compiler and flags
 set(CMAKE_C_COMPILER clang)
 set(CMAKE_CXX_COMPILER clang++)
-set(ARGON2_INCLUDE_DIR /usr/local/include)
-set(ARGON2_LIBRARY /usr/lib/libargon2.so)  # or .a for static library
 set(CMAKE_CXX_STANDARD 23)
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -Wextra")
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
+
+# Find OpenSSL
+find_package(OpenSSL REQUIRED)
 
 # Copy compile_commands.json to the project root after generation
 if (EXISTS ${CMAKE_BINARY_DIR}/compile_commands.json)
@@ -25,9 +26,22 @@ set(CMAKE_RULE_MESSAGES OFF)
 
 # Add your source files
 add_executable(hazmat
-  src/main.cc
-  src/setup.cc
-  src/entry.cc
-  src/crypt.cc
-  src/help.cc
+    src/main.cc
+    src/setup.cc
+    src/entry.cc
+    src/crypt.cc
+    src/help.cc
+)
+
+# Link OpenSSL to hazmat target
+target_link_libraries(hazmat
+    PRIVATE
+    OpenSSL::Crypto
+    OpenSSL::SSL
+)
+
+# Include directories
+target_include_directories(hazmat
+    PRIVATE
+    ${OPENSSL_INCLUDE_DIR}
 )

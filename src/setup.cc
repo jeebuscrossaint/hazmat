@@ -48,7 +48,7 @@ void SETUP::setupdir() {
 
         // Generate salt and hash password
         std::string salt = crypto.generateSalt();
-        std::string hashedPass = crypto.hashMasterPassword(masterPass);
+        std::string hashedPass = crypto.hashPassword(masterPass, salt);
         
         // Store master password data
         std::ofstream mfile(master_file);
