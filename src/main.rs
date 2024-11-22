@@ -1,3 +1,8 @@
+mod frontend{ pub mod help; }
+use frontend::help;
+
+use std::env;
+
 fn main() {
-    println!("Hello, world!");
+    help::show_help();
 }
