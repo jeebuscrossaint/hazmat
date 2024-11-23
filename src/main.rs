@@ -1,4 +1,5 @@
 mod frontend {
+    pub mod danger;
     pub mod help;
     pub mod initialize;
 }
@@ -8,7 +9,7 @@ mod backend {
 }
 
 use backend::parser;
-use frontend::{help, initialize};
+use frontend::{danger, help, initialize};
 
 use std::env;
 
@@ -23,6 +24,9 @@ fn main() {
     let _command = &_args[1];
     if _command == "help" {
         help::show_help();
+    }
+    if _command == "crush" {
+        danger::crush();
     } else {
         // export command work
         let _subcommand = &_args[2];
