@@ -25,26 +25,34 @@ fn main() {
     let _command = &_args[1];
     if _command == "help" {
         help::show_help();
-    }
-    if _command == "crush" {
+    } else if _command == "crush" {
         danger::crush();
-    } else {
-        // export command work
-        let _subcommand = &_args[2];
-        if _command == "export" && _subcommand == "help" {
-            help::export_help();
+    } else if _command == "export" {
+        if _args.len() > 2 {
+            let _subcommand = &_args[2];
+            if _subcommand == "help" {
+                help::export_help();
+            } else {
+                parser::export(_subcommand);
+            }
+        } else {
+            println!("Error: Missing subcommand for export.");
         }
-        if _command == "export" {
-            parser::export(_subcommand);
-        }
-        if _command == "import" {
+    } else if _command == "import" {
+        if _args.len() > 2 {
+            let _subcommand = &_args[2];
             match parser::import(_subcommand) {
                 Ok(entries) => {
-                    println!("Succesfully imported {} entries,", entries.len());
+                    println!("Successfully imported {} entries,", entries.len());
                     // idk do smthin
                 }
                 Err(e) => println!("Error importing file: {}", e),
             }
+        } else {
+            println!("Error: Missing subcommand for import.");
         }
+    } else {
+        println!("Error: Unrecognized command '{}'", _command);
+        help::show_help();
     }
 }
