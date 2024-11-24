@@ -5,6 +5,7 @@ mod frontend {
 }
 
 mod backend {
+    pub mod crypto;
     pub mod parser;
 }
 
