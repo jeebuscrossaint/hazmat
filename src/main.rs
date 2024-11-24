@@ -16,32 +16,32 @@ use std::env;
 
 fn main() {
     initialize::check_hazmat();
-    let _args: Vec<String> = env::args().collect();
-    //dbg!(_args);
-    if _args.len() <= 1 {
+    let args: Vec<String> = env::args().collect();
+    //dbg!(args);
+    if args.len() <= 1 {
         help::show_help();
         return;
     }
-    let _command = &_args[1];
-    if _command == "help" {
+    let command = &args[1];
+    if command == "help" {
         help::show_help();
-    } else if _command == "crush" {
+    } else if command == "crush" {
         danger::crush();
-    } else if _command == "export" {
-        if _args.len() > 2 {
-            let _subcommand = &_args[2];
-            if _subcommand == "help" {
+    } else if command == "export" {
+        if args.len() > 2 {
+            let subcommand = &args[2];
+            if subcommand == "help" {
                 help::export_help();
             } else {
-                parser::export(_subcommand);
+                parser::export(subcommand);
             }
         } else {
             println!("Error: Missing subcommand for export.");
         }
-    } else if _command == "import" {
-        if _args.len() > 2 {
-            let _subcommand = &_args[2];
-            match parser::import(_subcommand) {
+    } else if command == "import" {
+        if args.len() > 2 {
+            let subcommand = &args[2];
+            match parser::import(subcommand) {
                 Ok(entries) => {
                     println!("Successfully imported {} entries,", entries.len());
                     // idk do smthin
@@ -52,7 +52,7 @@ fn main() {
             println!("Error: Missing subcommand for import.");
         }
     } else {
-        println!("Error: Unrecognized command '{}'", _command);
+        println!("Error: Unrecognized command '{}'", command);
         help::show_help();
     }
 }
