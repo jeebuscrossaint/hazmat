@@ -28,19 +28,21 @@ fn create_master() {
     // should return a string
     println!("This is your first time using Hazmat. Please create a master password.");
     println!("Remember, if you forget this password, you will lose access to everything. The only option you will have is to crush.");
-    println!("Your passworud must be at least 15 characters long, and a max of 64 characters long, as specified by the NIST. (National Institute of Standards and Technology");
+    println!("Your passworud must be at least 15 characters long, and a max of 64 characters long, as specified by the NIST. (National Institute of Standards and Technology)\n Always remember, some of the best security comes from physical security as well, so maybe write your master password down somewhere, maybe write it in a different base too, and maybe keep a sharp object close by or even a firearm. You never know.");
     println!(
-        "Their specfications are: \n
-        - minimum of 15 characters, maximum of 64 characters\n
-        - accept all printable ASCII characters including spaces\n
-        - accept all Unicode/ISO/ISC 10646 characters. Each point will count as a single character\n
-        - will not impose composition rules for passwords\n
-        - will not require users to change passwords arbitrarily\n
-        - will not permit a master password hint\n
-        - will not permit usage of KBA (Knowledge Based Authentication) for password recovery\n
-        - will verify the entire submitted password\n"
+        "\x1b[1mTheir specifications are:\x1b[0m\n
+        \x1b[1m- minimum of 15 characters, maximum of 64 characters\x1b[0m\n
+        \x1b[1m- accept all printable ASCII characters including spaces\x1b[0m\n
+        \x1b[1m- accept all Unicode/ISO/ISC 10646 characters. Each point will count as a single character\x1b[0m\n
+        \x1b[1m- will not impose composition rules for passwords\x1b[0m\n
+        \x1b[1m- will not require users to change passwords arbitrarily\x1b[0m\n
+        \x1b[1m- will not permit a master password hint\x1b[0m\n
+        \x1b[1m- will not permit usage of KBA (Knowledge Based Authentication) for password recovery\x1b[0m\n
+        \x1b[1m- will verify the entire submitted password\x1b[0m\n"
     );
-    println!("Do you understand these requirements? (y/n)");
+    print!("Do you understand these requirements? (y/n) ");
+    std::io::stdout().flush().unwrap();
+
     let mut response = String::new();
     std::io::stdin().read_line(&mut response).unwrap();
     if response.trim() != "y" {
@@ -48,6 +50,7 @@ fn create_master() {
         return;
     }
     if response.trim() == "y" {
+        println!("Please enter your master password: ");
         std::io::stdout().flush().unwrap();
         let master = read_password().unwrap();
         //dbg
