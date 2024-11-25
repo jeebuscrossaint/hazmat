@@ -54,7 +54,10 @@ fn create_master() {
         std::io::stdout().flush().unwrap();
         let master = read_password().unwrap();
         //dbg
-        println!("The master password is: {}", master);
+        //println!("The master password is: {}", master);
+        let masterkeyfile = env::var("HOME").unwrap() + "/.hazmat/masterkey";
+        let mut file = fs::File::create(masterkeyfile).unwrap();
+        write!(file, "{}", master).unwrap();
         // supposede to call another function to do all the crypto setup for master pass
     }
     return;
