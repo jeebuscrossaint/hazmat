@@ -9,13 +9,13 @@ mod backend {
     pub mod parser;
 }
 
-use backend::parser;
+use backend::{crypto, parser};
 use frontend::{danger, help, initialize};
 
 use std::env;
 
 fn main() {
-    initialize::check_hazmat();
+    //initialize::check_hazmat();
     let args: Vec<String> = env::args().collect();
     //dbg!(args);
     if args.len() <= 1 {
@@ -27,6 +27,8 @@ fn main() {
         help::show_help();
     } else if command == "crush" {
         danger::crush();
+    } else if command == "generate" {
+        crypto::random_gen();
     } else if command == "export" {
         if args.len() > 2 {
             let subcommand = &args[2];
