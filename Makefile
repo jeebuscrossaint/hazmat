@@ -16,6 +16,9 @@ clean:
 run: $(TARGET)
 	./$(TARGET)
 
+debug: $(TARGET)
+	./$(TARGET); echo "Exit status: $$?"
+
 install: $(TARGET)
 	install -m 0755 $(TARGET) $(BINDIR)/$(TARGET)
 
