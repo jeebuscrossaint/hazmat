@@ -1,15 +1,11 @@
-CC = tcc
-CFLAGS = -O3 -b -g -Wall
-TARGET = hazmat
-SOURCES = $(wildcard *.c)
-OBJECTS = $(SOURCES:.c=.o)
+include config.mk
 
 .PHONY: all clean run install uninstall
 
 all: $(TARGET)
 
 $(TARGET): $(OBJECTS)
-	$(CC) $(CFLAGS) -o $@ $^
+	$(CC) $(CFLAGS) -o $@ $(OBJECTS)
 
 %.o: %.c
 	$(CC) $(CFLAGS) -c $< -o $@
@@ -21,7 +17,7 @@ run: $(TARGET)
 	./$(TARGET)
 
 install: $(TARGET)
-	install -m 0755 $(TARGET) /usr/local/bin/$(TARGET)
+	install -m 0755 $(TARGET) $(BINDIR)/$(TARGET)
 
 uninstall:
-	rm -f /usr/local/bin/$(TARGET)
+	rm -f $(BINDIR)/$(TARGET)

@@ -1,6 +1,6 @@
-#include "stdio.h"
+#include "hazmat.h"
 
-int main() {
-	printf("the password manager will be soon");
+int main(int argc, char *argv[]) {
+	hinit();
 	return 0;
 }
