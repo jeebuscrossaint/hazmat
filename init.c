@@ -36,6 +36,7 @@ int hinit() {
         } else {
                 mkdir(hazmat_dir, 0700);
                 create_hazmat_file(path);
+                create_master_pass(path);
         }
 
         return 0;
