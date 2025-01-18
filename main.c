@@ -1,6 +1,15 @@
 #include "hazmat.h"
 
 void print_help() {
+	printf("=============================================\n");
+	printf("=  hazmat: the best project on the resume   =\n");
+	printf("=					    =\n");
+	printf("=		  v0.0.1		    =\n");
+	printf("=					    =\n");
+	printf("= 	     Amarnath S. Patel	 	    =\n");
+	printf("=					    =\n");
+	printf("= https://github.com/jeebuscrossaint/hazmat =\n");
+	printf("=============================================\n\n");
 	printf("Usage: hazmat [OPTIONS]\n");
 	printf("Options:\n");
 	printf("  help    help		   Display this help message and help for subcommands.\n");
