@@ -27,14 +27,18 @@ int hinit() {
                 return -1; // Bro is homeless???
         }
 
-        snprintf(hazmat_dir, sizeof(hazmat_dir), "%s/.local/share/hazmat", home);
+        // Use a local buffer to reduce the number of snprintf calls
+        char local_hazmat_dir[PATH_MAX];
+        snprintf(local_hazmat_dir, sizeof(local_hazmat_dir), "%s/.local/share/hazmat", home);
+        strncpy(hazmat_dir, local_hazmat_dir, sizeof(hazmat_dir));
+
         char path[PATH_MAX];
-        snprintf(path, sizeof(path), "%s/hazmat.json", hazmat_dir);
+        snprintf(path, sizeof(path), "%s/hazmat.json", local_hazmat_dir);
 
         if (exists(path)) {
                 return 0; // File exists
         } else {
-                mkdir(hazmat_dir, 0700);
+                mkdir(local_hazmat_dir, 0700);
                 create_hazmat_file(path);
                 create_master_pass(path);
         }
