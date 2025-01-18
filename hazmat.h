@@ -22,4 +22,7 @@ int hshred();
 /* master.c */
 int create_master_pass(const char *path);
 
+/* help.c */
+void hhelp();
+
 #endif // HAZMAT_H

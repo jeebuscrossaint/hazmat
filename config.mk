@@ -4,7 +4,7 @@ CFLAGS = -O3 -b -g -Wall -std=c11
 
 # Target and sources
 TARGET = hazmat
-SOURCES = main.c init.c shred.c  master.c # List all your (additional) source files here
+SOURCES = main.c init.c shred.c  master.c help.c # List all your (additional) source files here
 OBJECTS = $(SOURCES:.c=.o)
 
 # Installation paths
