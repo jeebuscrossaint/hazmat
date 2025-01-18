@@ -1,6 +1,7 @@
+# Makefile
 include config.mk
 
-.PHONY: all clean run install uninstall
+.PHONY: all clean run debug install uninstall release compress
 
 all: $(TARGET)
 
@@ -24,3 +25,11 @@ install: $(TARGET)
 
 uninstall:
 	rm -f $(BINDIR)/$(TARGET)
+
+release: $(TARGET)
+	strip $(TARGET)
+	@if command -v upx >/dev/null 2>&1; then \
+		upx --best $(TARGET); \
+	else \
+		echo "UPX not found. Install it for additional compression."; \
+	fi

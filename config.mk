@@ -1,10 +1,10 @@
-# Compiler and flags
+# config.mk
 CC = tcc
-CFLAGS = -O3 -b -g -Wall -std=c11
+CFLAGS = -O3 -b -g -Wall -s -Os -fno-stack-protector
 
 # Target and sources
 TARGET = hazmat
-SOURCES = main.c init.c shred.c  master.c help.c # List all your (additional) source files here
+SOURCES = main.c init.c shred.c master.c help.c
 OBJECTS = $(SOURCES:.c=.o)
 
 # Installation paths
