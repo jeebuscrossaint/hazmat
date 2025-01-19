@@ -12,14 +12,6 @@ int exists(const char *fname) {
     return 0;
 }
 
-void create_hazmat_file(const char *path) {
-    FILE *file = fopen(path, "w");
-    if (file) {
-        fprintf(file, "{}\n");
-        fclose(file);
-    }
-}
-
 int hinit() {
     home = getenv("HOME");
     if (!home) {
@@ -28,7 +20,7 @@ int hinit() {
 
     // Use a local buffer to reduce the number of snprintf calls
     char local_hazmat_dir[PATH_MAX];
-    snprintf(local_hazmat_dir, sizeof(local_hazmat_dir), "%s/.local/share/hazmat", home);
+    snprintf(local_hazmat_dir, sizeof(local_hazmat_dir), "%s/.hazmat", home);
     strncpy(hazmat_dir, local_hazmat_dir, sizeof(hazmat_dir));
 
     char path[PATH_MAX];
@@ -38,9 +30,7 @@ int hinit() {
         return 0; // File exists
     } else {
         mkdir(local_hazmat_dir, 0700);
-        if (create_master_pass(path) == 0) {
-            create_hazmat_file(path);
-        } else {
+        if (create_master_pass(path) != 0) {
             printf("Failed to create master password. Initialization aborted.\n");
             return -1;
         }

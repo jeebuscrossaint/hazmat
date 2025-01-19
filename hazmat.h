@@ -19,7 +19,6 @@
 /* JSON */
 #include <cjson/cJSON.h>
 
-
 extern const char *home;
 extern char hazmat_dir[PATH_MAX];
 
