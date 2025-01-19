@@ -11,6 +11,7 @@
 #include <unistd.h>
 #include <limits.h>
 #include <termios.h>
+#include <dirent.h>
 
 /* Cryptograhpy */
 #include <openssl/sha.h>

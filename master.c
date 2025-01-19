@@ -9,16 +9,17 @@ void get_password(char *password, size_t size) {
     int i = 0;
     char c;
 
-    // turn off echo
+    // Turn off echo
     tcgetattr(STDIN_FILENO, &oldt);
     newt = oldt;
     newt.c_lflag &= ~(ECHO);
     tcsetattr(STDIN_FILENO, TCSANOW, &newt);
 
-    // read password
+    // Read password
     while (i < size - 1 && (c = getchar()) != '\n' && c != EOF) {
         password[i++] = c;
         printf("*");
+        fflush(stdout); // Ensure the asterisk is printed immediately
     }
     password[i] = '\0';
 
