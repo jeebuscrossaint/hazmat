@@ -6,9 +6,18 @@
 #include <stdlib.h>
 #include <string.h>
 
+/* Linux headers */
 #include <sys/stat.h>
 #include <unistd.h>
-#include <linux/limits.h>
+#include <limits.h>
+#include <termios.h>
+
+/* Cryptograhpy */
+#include <openssl/sha.h>
+
+/* JSON */
+#include <cjson/cJSON.h>
+
 
 extern const char *home;
 extern char hazmat_dir[PATH_MAX];

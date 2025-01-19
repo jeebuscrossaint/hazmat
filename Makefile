@@ -1,12 +1,11 @@
-# Makefile
 include config.mk
 
-.PHONY: all clean run debug install uninstall release compress
+.PHONY: all clean run debug install uninstall release
 
 all: $(TARGET)
 
 $(TARGET): $(OBJECTS)
-	$(CC) $(CFLAGS) -o $@ $(OBJECTS)
+	$(CC) $(CFLAGS) -o $@ $(OBJECTS) $(LDFLAGS)
 
 %.o: %.c
 	$(CC) $(CFLAGS) -c $< -o $@
@@ -28,8 +27,3 @@ uninstall:
 
 release: $(TARGET)
 	strip $(TARGET)
-	@if command -v upx >/dev/null 2>&1; then \
-		upx --best $(TARGET); \
-	else \
-		echo "UPX not found. Install it for additional compression."; \
-	fi
