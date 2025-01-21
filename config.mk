@@ -1,6 +1,6 @@
 # config.mk
 CC = tcc
-CFLAGS = -O3 -g -Wall -s -Os -fno-stack-protector
+CFLAGS = -O3 -g -Wall -s -Os -fno-stack-protector -Wunsupported -Wwrite-strings -Werror -b
 LDFLAGS = -lssl -lcrypto -lcjson
 
 # Target and sources
