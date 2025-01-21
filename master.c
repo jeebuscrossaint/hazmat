@@ -36,23 +36,37 @@ void hash_password(const char *password, unsigned char *hash) {
 }
 
 void store_password(const char *path, const unsigned char *hash) {
-    cJSON *json = cJSON_CreateObject();
+    // Create root object
+    cJSON *root = cJSON_CreateObject();
+    
+    // Add master password hash
     char hash_string[SHA256_DIGEST_LENGTH * 2 + 1];
-
     for (int i = 0; i < SHA256_DIGEST_LENGTH; i++) {
         sprintf(hash_string + (i * 2), "%02x", hash[i]);
     }
+    cJSON_AddStringToObject(root, "master_password", hash_string);
+    
+    // Add settings object
+    cJSON *settings = cJSON_CreateObject();
+    cJSON_AddNumberToObject(settings, "safe_time", 300); // 5 minutes in seconds
+    cJSON_AddItemToObject(root, "settings", settings);
+    
+    // Add timestamps
+    time_t now = time(NULL);
+    char time_str[32];
+    strftime(time_str, sizeof(time_str), "%Y-%m-%d %H:%M:%S", localtime(&now));
+    cJSON_AddStringToObject(root, "creation_time", time_str);
+    cJSON_AddStringToObject(root, "last_modified", time_str);
 
-    cJSON_AddStringToObject(json, "master_password", hash_string);
-
-    char *json_string = cJSON_Print(json);
+    // Write to file
+    char *json_string = cJSON_Print(root);
     FILE *file = fopen(path, "w");
     if (file) {
         fprintf(file, "%s\n", json_string);
         fclose(file);
     }
 
-    cJSON_Delete(json);
+    cJSON_Delete(root);
     free(json_string);
 }
 
@@ -70,50 +84,30 @@ int create_master_pass(const char *path) {
         printf("9. Verifiers SHALL verify the entire submitted password (i.e., not truncate it).\n\n");
 
         printf("Do you consent to these guidelines? [Y/N] ");
-        char consent;
-        scanf(" %c", &consent);
-        while (getchar() != '\n'); // Consume the newline character
+    char consent;
+    scanf(" %c", &consent);
+    while (getchar() != '\n'); // Consume the newline character
 
-        if (consent == 'n' || consent == 'N') {
-            return -1;
-        }
-        if (consent == 'Y' || consent == 'y') {
-            char password[65];
-            printf("Enter your master password: ");
-            get_password(password, sizeof(password));
-
-            // Check password length
-            size_t len = strlen(password);
-            if (len < 8 || len > 64) {
-                printf("Password must be between 8 and 64 characters.\n");
-                return -1;
-            }
-
-            unsigned char hash[SHA256_DIGEST_LENGTH];
-            hash_password(password, hash);
-
-            // Create JSON object and store the hashed password
-            cJSON *json = cJSON_CreateObject();
-            char hash_string[SHA256_DIGEST_LENGTH * 2 + 1];
-
-            for (int i = 0; i < SHA256_DIGEST_LENGTH; i++) {
-                sprintf(hash_string + (i * 2), "%02x", hash[i]);
-            }
-
-            cJSON_AddStringToObject(json, "master_password", hash_string);
-
-            char *json_string = cJSON_Print(json);
-            FILE *file = fopen(path, "w");
-            if (file) {
-                fprintf(file, "%s\n", json_string);
-                fclose(file);
-            }
-
-            cJSON_Delete(json);
-            free(json_string);
-
-            return 0;
-        }
-
+    if (consent == 'n' || consent == 'N') {
         return -1;
     }
+    if (consent == 'Y' || consent == 'y') {
+        char password[65];
+        printf("Enter your master password: ");
+        get_password(password, sizeof(password));
+
+        // Check password length
+        size_t len = strlen(password);
+        if (len < 8 || len > 64) {
+            printf("Password must be between 8 and 64 characters.\n");
+            return -1;
+        }
+
+        unsigned char hash[SHA256_DIGEST_LENGTH];
+        hash_password(password, hash);
+        store_password(path, hash);  // Use the enhanced store_password function
+        return 0;
+    }
+
+    return -1;
+}
