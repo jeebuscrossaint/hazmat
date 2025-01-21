@@ -25,5 +25,6 @@ install: $(TARGET)
 uninstall:
 	rm -f $(BINDIR)/$(TARGET)
 
+release: CFLAGS = $(RELEASE_FLAGS)
 release: $(TARGET)
 	strip $(TARGET)
