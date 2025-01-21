@@ -20,7 +20,7 @@
 ## ✨ Features
 
 - 🔒 Secure password storage using OpenSSL encryption
-- 🗑️ Secure data shredding with military-grade wiping
+- 🗑️ Secure data shredding
 - 📦 JSON-based data storage
 - 🚀 Blazingly fast and lightweight (< 200KB binary)
 - 🐧 Native Linux support
