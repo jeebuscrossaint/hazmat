@@ -1,32 +1,32 @@
 #include "hazmat.h"
 
 int is_directory_empty(const char *dirname) {
-        int n = 0;
-        struct dirent *d;
-        DIR *dir = opendir(dirname);
-        if (dir == NULL) // Directory does not exist
-            return 1;
-        while ((d = readdir(dir)) != NULL) {
-            if (strcmp(d->d_name, ".") != 0 && strcmp(d->d_name, "..") != 0) {
-                n++; // Only count non-dot entries
-            }
-        }
-        closedir(dir);
-        return n == 0; // Return true if directory has no non-dot entries
+	int n = 0;
+	struct dirent *d;
+	DIR *dir = opendir(dirname);
+	if (dir == NULL) // Directory does not exist
+	    return 1;
+	while ((d = readdir(dir)) != NULL) {
+	    if (strcmp(d->d_name, ".") != 0 && strcmp(d->d_name, "..") != 0) {
+		n++; // Only count non-dot entries
+	    }
+	}
+	closedir(dir);
+	return n == 0; // Return true if directory has no non-dot entries
     }
 
 int hshred() {
     int shred_avail = system("which shred > /dev/null");
 
     if (shred_avail != 0) {
-        printf("Binary program 'shred' not found. OS Error code: %d \n", shred_avail);
-        return -1;
+	printf("Binary program 'shred' not found. OS Error code: %d \n", shred_avail);
+	return -1;
     }
 
     const char *home_dir = getenv("HOME");
     if (!home_dir) {
-        printf("HOME environment variable not set.\n");
-        return -1;
+	printf("HOME environment variable not set.\n");
+	return -1;
     }
 
     char cmd[PATH_MAX + 50];
