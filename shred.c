@@ -36,6 +36,6 @@ int hshred() {
     snprintf(cmd, sizeof(cmd), "rmdir %s/.hazmat 2>/dev/null", home_dir);
     system(cmd);
     
-    printf("Shred complete. Good luck.\n");
+    printf("\033[0;32mShred complete.\033[0m \033[0;31mGood luck.\033[0m\n");
     return 0;
 }

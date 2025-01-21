@@ -4,7 +4,7 @@ int main(int argc, char *argv[]) {
 
 	if (argc < 2) {
 		hhelp();
-		return 1;
+		return 0;
 	}
 
 	if (strcmp(argv[1], "help") == 0) {

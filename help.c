@@ -4,7 +4,7 @@ void hhelp() {
 	printf("=============================================\n");
 	printf("=  hazmat: the best project on the resume   =\n");
 	printf("=					    =\n");
-	printf("=		  v0.0.8		    =\n");
+	printf("=		  v0.0.9		    =\n");
 	printf("=					    =\n");
 	printf("= 	     Amarnath S. Patel	 	    =\n");
 	printf("=					    =\n");
