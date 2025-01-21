@@ -1,42 +1,72 @@
-# hazmat
+<div align="center">
 
-*CLI password manager in C11 using tinycc*
-____________________________________________________
+# 🔐 HAZMAT
 
-## put fancy crap for the freakme.md
+<img src="https://raw.githubusercontent.com/jeebuscrossaint/hazmat/master/hazmat-banner.svg" alt="HAZMAT Banner" width="600"/>
 
-## Features
-basically nothing yet lol
+[![License](https://img.shields.io/badge/license-BSD--2--Clause-blue.svg)](LICENSE)
+[![Built with TCC](https://img.shields.io/badge/built%20with-TinyCC-orange.svg)](https://bellard.org/tcc/)
+[![Platform](https://img.shields.io/badge/platform-Linux-lightgrey.svg)]()
+[![Language](https://img.shields.io/badge/language-C99-green.svg)]()
 
-## Installation
+*A blazingly fast and tiny CLI password manager written in C99 using TinyCC*
 
-We have a few dependencies to install before we can build the project.
+[Installation](#installation) • [Features](#features) • [Usage](#usage) • [Contributing](#contributing)
 
-First thing is that I am pretty sure this project only compiles using `tinycc` so you will need to install that.
+</div>
 
-Secondly we also use `openssl` for hashing and encryption so you will need to install that as well.
+---
 
-Thirdly we also need `cJSON` for parsing and writing json files so you will need to install that as well.
+## ✨ Features
 
-Also the program relies internally on the `shred` command to securely delete files so you will need to install that as well. Most UNIX like systems should have this command by default. Anyways this program can't build on Windows so you should be fine. Also I think it can't build on BSD either since of use of Linux specific headers but if someone wants to patch that I would be happy to accept the PR.
+- 🔒 Secure password storage using OpenSSL encryption
+- 🗑️ Secure data shredding with military-grade wiping
+- 📦 JSON-based data storage
+- 🚀 Blazingly fast and lightweight (< 200KB binary)
+- 🐧 Native Linux support
+- 🔑 Master password protection
 
-Alright once we have the dependencies installed we can build the project.
+## 🚀 Installation
 
-Should probably mention the program is also on the AUR so you can install it from there as well.
+### Prerequisites
+
+- `tinycc` - The Tiny C Compiler
+- `openssl` - Cryptography and SSL/TLS Toolkit
+- `cjson` - Lightweight JSON parser
+- `coreutils` - For the `shred` command (included in most Unix systems)
+
+### Building from Source
 
 ```bash
 git clone https://github.com/jeebuscrossaint/hazmat.git
 cd hazmat
-make release # Does also work with bmake
+make release  # Also works with bmake
 sudo make install
 ```
 
-## Usage
+## AUR Package
+```bash
+yay/paru -S hazmat # or your preferred AUR helper
+```
 
-will document later
+## 🔧 Usage
+```hazmat [OPTIONS]```
 
-## License
+## Options
+- `help` - Display help message
+- `init` - Initialize password store
+- `shred` - Securely delete all data
+- `add` - Add a new entry
+- `delete` - Delete an entry
+- `show` - Display entry information
+- `import` - Import data from file
+- `export` - Export data to file
 
+## 🤝 Contributin
+Contributions are welcome! Feel free to submit a PR. 
+Do adhere to the `CONTRIBUTING.md` guidelines along with the code abiding by our `BSD-2-Clause` license.
+
+## 📜 License
 ```
 BSD 2-Clause License
 
@@ -63,3 +93,5 @@ CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY,
 OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
 OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 ```
+
+<div align="center"> Made with ❤️ by <a href="https://github.com/jeebuscrossaint">Amarnath P.</a> </div>
