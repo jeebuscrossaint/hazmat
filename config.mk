@@ -6,7 +6,7 @@ LDFLAGS = -lssl -lcrypto -lcjson
 
 # Target and sources
 TARGET = hazmat
-SOURCES = main.c init.c shred.c master.c help.c
+SOURCES = main.c init.c shred.c master.c help.c random.c add.c
 OBJECTS = $(SOURCES:.c=.o)
 
 # Installation paths

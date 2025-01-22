@@ -12,6 +12,32 @@ int main(int argc, char *argv[]) {
 	} else if (strcmp(argv[1], "init") == 0) {
 		hinit();
 	}
+	else if (strcmp(argv[1], "gen") == 0) {
+	       if (argc != 3) {
+			fprintf(stderr, "Error: 'gen' command requires length argument\n");
+			fprintf(stderr, "Usage: %s gen <length>\n", argv[0]);
+			return 1;
+		}
+		// Convert string argument to integer
+		int len = atoi(argv[2]);
+		if (len < 8 || len > 64) {
+		fprintf(stderr, "Error: length must be between 8 and 64\n");
+		return 1;
+		}
+		if (len <= 0) {
+		      fprintf(stderr, "Error: length must be a positive number\n");
+		      return 1;
+		}
+
+		char* random_string = genrand(len);
+		if (random_string == NULL) {
+		      fprintf(stderr, "Error: Failed to generate random number string\n");
+		      return 1;
+		}
+
+		printf("%s\n", random_string);
+		free(random_string); // im not leaking bud
+	}
 	else if (strcmp(argv[1], "shred") == 0) {
 		hshred();
 	} else if (strcmp(argv[1], "add") == 0 && argc == 3) {

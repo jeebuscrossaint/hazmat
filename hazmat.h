@@ -13,6 +13,7 @@
 #include <limits.h>
 #include <termios.h>
 #include <dirent.h>
+#include <sys/random.h>
 
 /* Cryptograhpy */
 #include <openssl/sha.h>
@@ -34,5 +35,8 @@ int create_master_pass(const char *path);
 
 /* help.c */
 void hhelp();
+
+/* random.c */
+char* genrand(int len);
 
 #endif // HAZMAT_H
