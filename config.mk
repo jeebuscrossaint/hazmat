@@ -1,6 +1,6 @@
 # config.mk
 CC = tcc
-CFLAGS = -O3 -g -Wall -s -Os -fno-stack-protector -Wunsupported -Wwrite-strings -Werror -b -bench
+CFLAGS = -O3 -g -Wall -s -Os -fno-stack-protector -Wunsupported -Wwrite-strings -Werror -bench
 RELEASE_FLAGS = -O3 -Wall -s -Os -fno-stack-protector -Wunsupported -Wwrite-strings -Werror
 LDFLAGS = -lssl -lcrypto -lcjson
 
