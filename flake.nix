@@ -6,12 +6,15 @@
     utils.url = "github:numtide/flake-utils";
   };
 
-  outputs = { self, nixpkgs, utils }:
-    utils.lib.eachDefaultSystem (system:
-      let
+  outputs = {
+    self,
+    nixpkgs,
+    utils,
+  }:
+    utils.lib.eachDefaultSystem (
+      system: let
         pkgs = nixpkgs.legacyPackages.${system};
-      in
-      {
+      in {
         packages.default = pkgs.stdenv.mkDerivation {
           pname = "hazmat";
           version = "0.0.9";
@@ -50,7 +53,7 @@
             homepage = "https://github.com/jeebuscrossaint/hazmat";
             license = licenses.bsd2;
             platforms = platforms.linux;
-            maintainers = with maintainers; [ "Amarnath P." ];
+            maintainers = with maintainers; ["Amarnath P."];
           };
         };
 
