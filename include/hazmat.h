@@ -9,5 +9,7 @@
 #include "random.h"
 #include "add.h"
 #include "show.h"
+#include "delete.h"
+#include "update.h"
 
 #endif // HAZMAT_H

@@ -1,6 +1,8 @@
 #include "hazmat.h"
 #include "add.h"
 #include "show.h"
+#include "delete.h"
+#include "update.h"
 
 int main(int argc, char *argv[]) {
 
@@ -61,8 +63,20 @@ int main(int argc, char *argv[]) {
             fprintf(stderr, "Usage: %s show [entry-name]\n", argv[0]);
             return 1;
         }
-    } else if (strcmp(argv[1], "delete") == 0 && argc == 3) {
-        // Implement delete functionality with argv[2] as the file
+    } else if (strcmp(argv[1], "delete") == 0) {
+        if (argc != 3) {
+            fprintf(stderr, "Error: 'delete' command requires entry name argument\n");
+            fprintf(stderr, "Usage: %s delete <entry-name>\n", argv[0]);
+            return 1;
+        }
+        return delete_entry(argv[2]) ? 0 : 1;
+    } else if (strcmp(argv[1], "update") == 0) {
+        if (argc != 3) {
+            fprintf(stderr, "Error: 'update' command requires entry name argument\n");
+            fprintf(stderr, "Usage: %s update <entry-name>\n", argv[0]);
+            return 1;
+        }
+        return update_entry(argv[2]) ? 0 : 1;
     } else if (strcmp(argv[1], "import") == 0 && argc == 3) {
         // Implement import functionality with argv[2] as the file
     } else if (strcmp(argv[1], "export") == 0 && argc == 3) {
