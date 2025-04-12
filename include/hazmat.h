@@ -8,5 +8,6 @@
 #include "help.h"
 #include "random.h"
 #include "add.h"
+#include "show.h"
 
 #endif // HAZMAT_H
