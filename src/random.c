@@ -1,3 +1,4 @@
+#include "random.h"
 #include "hazmat.h"
 
 char* genrand(int len) {

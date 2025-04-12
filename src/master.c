@@ -1,8 +1,5 @@
+#include "master.h"
 #include "hazmat.h"
-#include <cjson/cJSON.h>
-#include <openssl/sha.h>
-#include <termios.h>
-#include <unistd.h>
 
 void get_password(char *password, size_t size) {
     struct termios oldt, newt;
@@ -38,19 +35,19 @@ void hash_password(const char *password, unsigned char *hash) {
 void store_password(const char *path, const unsigned char *hash) {
     // Create root object
     cJSON *root = cJSON_CreateObject();
-    
+
     // Add master password hash
     char hash_string[SHA256_DIGEST_LENGTH * 2 + 1];
     for (int i = 0; i < SHA256_DIGEST_LENGTH; i++) {
         sprintf(hash_string + (i * 2), "%02x", hash[i]);
     }
     cJSON_AddStringToObject(root, "master_password", hash_string);
-    
+
     // Add settings object
     cJSON *settings = cJSON_CreateObject();
     cJSON_AddNumberToObject(settings, "safe_time", 300); // 5 minutes in seconds
     cJSON_AddItemToObject(root, "settings", settings);
-    
+
     // Add timestamps
     time_t now = time(NULL);
     char time_str[32];
@@ -80,7 +77,7 @@ int create_master_pass(const char *path) {
         printf("5. Verifiers and CSPs SHALL NOT impose other composition rules (e.g., requiring mixtures of different character types) for passwords.\n");
         printf("6. Verifiers and CSPs SHALL NOT require users to change passwords periodically. However, verifiers SHALL force a change if there is evidence of compromise of the authenticator.\n");
         printf("7. Verifiers and CSPs SHALL NOT permit the subscriber to store a hint that is accessible to an unauthenticated claimant.\n");
-        printf("8. Verifiers and CSPs SHALL NOT prompt subscribers to use knowledge-based authentication (KBA) (e.g., “What was the name of your first pet?”) or security questions when choosing passwords.\n");
+        printf("8. Verifiers and CSPs SHALL NOT prompt subscribers to use knowledge-based authentication (KBA) (e.g., \"What was the name of your first pet?\") or security questions when choosing passwords.\n");
         printf("9. Verifiers SHALL verify the entire submitted password (i.e., not truncate it).\n\n");
 
         printf("Do you consent to these guidelines? [Y/N] ");

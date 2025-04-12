@@ -1,3 +1,4 @@
+#include "help.h"
 #include "hazmat.h"
 
 void hhelp() {

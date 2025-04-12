@@ -1,3 +1,4 @@
+#include "add.h"
 #include "hazmat.h"
 
 void description() {};

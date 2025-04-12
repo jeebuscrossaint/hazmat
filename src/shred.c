@@ -1,3 +1,4 @@
+#include "shred.h"
 #include "hazmat.h"
 
 int is_directory_empty(const char *dirname) {
@@ -32,10 +33,10 @@ int hshred() {
     char cmd[PATH_MAX + 50];
     snprintf(cmd, sizeof(cmd), "shred -u -z -n 7 %s/.hazmat/* 2>/dev/null", home_dir);
     system(cmd);
-    
+
     snprintf(cmd, sizeof(cmd), "rmdir %s/.hazmat 2>/dev/null", home_dir);
     system(cmd);
-    
+
     printf("\033[0;32mShred complete.\033[0m \033[0;31mGood luck.\033[0m\n");
     return 0;
 }

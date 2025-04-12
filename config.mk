@@ -1,12 +1,11 @@
-# config.mk
 CC = tcc
-CFLAGS = -O3 -g -Wall -s -Os -fno-stack-protector -Wunsupported -Wwrite-strings -Werror -bench
-RELEASE_FLAGS = -O3 -Wall -s -Os -fno-stack-protector -Wunsupported -Wwrite-strings -Werror
+CFLAGS = -O3 -g -Wall -s -Os -fno-stack-protector -Wunsupported -Wwrite-strings -Werror -bench -Iinclude
+RELEASE_FLAGS = -O3 -Wall -s -Os -fno-stack-protector -Wunsupported -Wwrite-strings -Werror -Iinclude
 LDFLAGS = -lssl -lcrypto -lcjson
 
 # Target and sources
 TARGET = hazmat
-SOURCES = main.c init.c shred.c master.c help.c random.c add.c
+SOURCES = $(wildcard src/*.c)
 OBJECTS = $(SOURCES:.c=.o)
 
 # Installation paths

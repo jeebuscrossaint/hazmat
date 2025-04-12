@@ -24,6 +24,7 @@
           nativeBuildInputs = with pkgs; [
             tinycc
             pkg-config
+            makeWrapper
           ];
 
           buildInputs = with pkgs; [
@@ -35,10 +36,11 @@
           preBuild = ''
             cat > config.mk << EOF
             CC = tcc
-            CFLAGS = -Wall -Wextra -I${pkgs.openssl.dev}/include -I${pkgs.cjson}/include
+            CFLAGS = -Wall -Wextra -I./include -I${pkgs.openssl.dev}/include -I${pkgs.cjson}/include
             LDFLAGS = -L${pkgs.openssl.out}/lib -L${pkgs.cjson}/lib -lssl -lcrypto -lcjson
             TARGET = hazmat
-            OBJECTS = main.o init.o help.o shred.o master.o random.o
+            SOURCES = \$(wildcard src/*.c)
+            OBJECTS = \$(SOURCES:.c=.o)
             BINDIR = $out/bin
             EOF
           '';
@@ -46,6 +48,12 @@
           # Create bin directory
           preInstall = ''
             mkdir -p $out/bin
+          '';
+
+          # Wrap binary with correct library path
+          postInstall = ''
+            wrapProgram $out/bin/hazmat \
+              --prefix LD_LIBRARY_PATH : ${pkgs.lib.makeLibraryPath [ pkgs.openssl pkgs.cjson ]}
           '';
 
           meta = with pkgs.lib; {

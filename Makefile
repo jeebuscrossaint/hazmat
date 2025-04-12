@@ -7,7 +7,8 @@ all: $(TARGET)
 $(TARGET): $(OBJECTS)
 	$(CC) $(CFLAGS) -o $@ $(OBJECTS) $(LDFLAGS)
 
-%.o: %.c
+# Special compile rule for source files
+src/%.o: src/%.c
 	$(CC) $(CFLAGS) -c $< -o $@
 
 clean:
@@ -20,11 +21,12 @@ debug: $(TARGET)
 	./$(TARGET); echo "Exit status: $$?"
 
 install: $(TARGET)
-	install -m 0755 $(TARGET) $(BINDIR)/$(TARGET)
+	mkdir -p $(DESTDIR)$(BINDIR)
+	install -m 0755 $(TARGET) $(DESTDIR)$(BINDIR)/$(TARGET)
 
 uninstall:
 	rm -f $(BINDIR)/$(TARGET)
 
 release: CFLAGS = $(RELEASE_FLAGS)
-release: $(TARGET)
+release: clean $(TARGET)
 	strip $(TARGET)
